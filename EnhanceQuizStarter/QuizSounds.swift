@@ -1,5 +1,6 @@
 import AudioToolbox
 class QuizSounds {
+ 
     var gameSound: SystemSoundID = 0
     init(soundName: String, soundType: String) {
         let path = Bundle.main.path(forResource: soundName , ofType: soundType)
@@ -11,9 +12,3 @@ class QuizSounds {
         AudioServicesPlaySystemSound(gameSound)
     }
 }
-//    func loadGameStartSound(soundName: String) {
-//
-//    }
-    
-//    let testSound = gameSound(SoundName: "Correct")
-//    testSound.play
