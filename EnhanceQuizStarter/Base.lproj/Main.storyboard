@@ -106,13 +106,13 @@
                             <constraint firstItem="iDa-N0-xRS" firstAttribute="top" secondItem="i7q-Ut-bwA" secondAttribute="bottom" constant="20" id="FBU-fe-zJD"/>
                             <constraint firstItem="eic-Nx-foS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="GZI-G4-b3U"/>
                             <constraint firstItem="i7q-Ut-bwA" firstAttribute="top" secondItem="qYh-2d-v8I" secondAttribute="bottom" constant="20" id="I4K-kE-ITk"/>
-                            <constraint firstItem="CSn-ih-qRR" firstAttribute="top" secondItem="dCF-BL-dDa" secondAttribute="bottom" constant="55" id="JEr-2F-Y3F"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Jko-Ph-p0U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eic-Nx-foS" secondAttribute="bottom" constant="69" id="Jrx-t5-67m"/>
                             <constraint firstItem="qYh-2d-v8I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="L0m-Xa-w9j"/>
                             <constraint firstItem="iDa-N0-xRS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="VGn-o5-7Tq"/>
                             <constraint firstItem="dCF-BL-dDa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="146" id="cHe-LN-0xY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eic-Nx-foS" secondAttribute="trailing" constant="30" id="e9A-0l-UtM"/>
+                            <constraint firstItem="CSn-ih-qRR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="242" id="etO-G9-kF4"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="ftx-8n-Jk7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dCF-BL-dDa" secondAttribute="trailing" constant="30" id="g35-L8-Fd8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i7q-Ut-bwA" secondAttribute="trailing" constant="30" id="pTU-cf-CtL"/>
@@ -138,6 +138,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Brand to Generic Quiz (1)" width="992" height="692"/>
+        <image name="Brand to Generic Quiz (1)" width="496" height="346"/>
     </resources>
 </document>

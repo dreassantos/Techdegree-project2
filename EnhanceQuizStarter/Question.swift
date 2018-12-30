@@ -1,7 +1,7 @@
 /// Creates the questions
 struct QuestionProvider {
     let question: String
-    let answerOptions:[String]
+    let answerOptions: [String]
     let correctAnswer: Int
 }
 

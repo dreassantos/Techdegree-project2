@@ -3,86 +3,88 @@ import GameKit
 class QuizManager {
     
     let questionsPerRound = 4
-    var questionsAsked = 6
+    var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion = 0
+    var indexOfUsedQuestions:[Int] = []
     let quiz = Quiz()
-    
-    //selects a random number to be used as our quiz index
-    func randomQuestion() {
-        print("Finding Random Index")
-        indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
+ 
+    /// Loads all of the games sounds
+    func loadSounds(){
+     
+        startSound.loadSound(idNumber: &startSound.idNumber, soundName: startSound.soundName, soundType: startSound.soundType)
+        correctSound.loadSound(idNumber: &correctSound.idNumber, soundName: correctSound.soundName, soundType: correctSound.soundType)
+        wrongSound.loadSound(idNumber: &wrongSound.idNumber, soundName: wrongSound.soundName, soundType: wrongSound.soundType)
+        //play the intro sound
+        startSound.play(idNumber: startSound.idNumber)
     }
     
-    ///sets the text for the question
-    func setQuestionText() -> String {
-        print("setting up the question")
+    /// Selects an unused random number to be set as our quiz index
+    func randomQuestion() {
+        //using a temp array to hold all of the used questions
+        let tempSelectedIndex = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
+        if !(indexOfUsedQuestions.contains(tempSelectedIndex)){ //checks if the random number was already used
+            indexOfUsedQuestions.append(tempSelectedIndex)
+            indexOfSelectedQuestion = tempSelectedIndex // sets the index of the selected question if the index is not already used.
+        } else { randomQuestion() } // if it was already used pick and test another number.
+    }
+    
+    /// Returns the text for the question
+    func getQuestionText() -> String {
         randomQuestion()
         let currentQustion = quiz.questions[indexOfSelectedQuestion].question
         return ("What is the generic name for \(currentQustion)")
     }
     
-    ///Retruns the array of possible answers for the current question
+    /// Retruns the array of possible answers for the current question
     func getAnswers() -> [String] {
-         print("getting answers array")
         return (quiz.questions[indexOfSelectedQuestion].answerOptions)
     }
     
-    ///sets the result text for the current game
-    func setResultText() -> String {
-          print("getting Text for results")
-        return ("Way to go!\nYou got \(correctQuestions) out of \(questionsPerRound) correct!")
+    /// Returns the end of quiz result text for the current game
+    func getResultText() -> String {
+        let score = Int ((Double(correctQuestions) / Double(questionsPerRound)) * 100) // Passing is 70%
+        let result: String
+        if score > 70
+        {
+            result = """
+            You passed!
+            Your score is \(score)%
+            You got \(correctQuestions) out of \(questionsPerRound) correct!
+            """
+        } else {
+            result = """
+            Keep Praticing!
+            Your score is \(score)%
+            You got \(correctQuestions) out of \(questionsPerRound) correct!
+            """
+        }
+        return (result)
     }
     
-    ///Checks the answer by comparing the buttons current displayed text to the quiz objects correct answer
+    /// Returns a string: Checks the answer by comparing the buttons current displayed text to the quiz objects correct answer string
     func checkAnswer(buttonText: String) -> String {
-          print("Checking Answer")
         var correctStatus: Bool
         questionsAsked += 1
-        let correctOption = quiz.questions[indexOfSelectedQuestion].correctAnswer
-        let correctAnswer = getAnswers()[correctOption]
+        let correctOption = quiz.questions[indexOfSelectedQuestion].correctAnswer // finds the int that represents the index of the correct string
+        let correctAnswer = getAnswers()[correctOption] // the string of the correct answer
        
-        if (buttonText.contains(correctAnswer)) {
-            QuizSounds(soundName: "correct" , soundType: "wav").play()
+        if (buttonText.contains(correctAnswer)) { // if the buttons text and the correct answer match its correct
+            correctSound.play(idNumber: correctSound.idNumber)
+            correctQuestions += 1
             correctStatus = true
         } else{
-            QuizSounds(soundName: "wrong" , soundType: "wav").play()
+           wrongSound.play(idNumber: wrongSound.idNumber)
             correctStatus = false
         }
-        return (correctStatus ? "Correct" : "Wrong Answer" )
+        return (correctStatus ? "Correct" : "Wrong Answer" ) // Returns correct if true and wrong if false
     }
     
-    ///Delays the next round
-    func loadNextRound(delay seconds: Int) {
-        // Converts a delay in seconds to nanoseconds as signed 64 bit integer
-        let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
-        // Calculates a time value to execute the method given current time and delay
-        let dispatchTime = DispatchTime.now() + Double(delay) / Double(NSEC_PER_SEC)
-        // Executes the nextRound method at the dispatch time on the main queue
-        DispatchQueue.main.asyncAfter(deadline: dispatchTime) {
-            print("finishing time delay")
-            self.nextRound()
-        }
-    }
-    
-    func nextRound() {
-        print("Starting nextRound")
-        if questionsAsked >= questionsPerRound {
-            print("Game Over")
-            ViewController().displayScore()
-        } else {
-            print("Keep playing")
-            print("Loading next question")
-            ViewController().displayQuestion()
-        }
-    }
-    
-    ///logic for if the play again button is clicked.
-    func playAgain() {
+    /// Resets the variables used in the quiz - Helper method to the playAgain() method in ViewController 
+    func playAgain(){
         questionsAsked = 0
         correctQuestions = 0
-        QuizSounds(soundName: "GameSound" , soundType: "wav").play()
-        nextRound()
-        print("Inside of play again")
+        startSound.play(idNumber: startSound.idNumber)
+        indexOfUsedQuestions.removeAll()
     }
 }
