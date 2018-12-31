@@ -3,13 +3,12 @@
 //  Created by Pasan Premaratne on 3/12/18.
 //  Updated by Andrea S Santos 12/29/2018
 //  Copyright © 2018 Treehouse. All rights reserved.
-
 import UIKit
 
 class ViewController: UIViewController {
     
     var quizManager = QuizManager()
-
+    
     // MARK: - Outlets
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var button1: UIButton!
@@ -17,6 +16,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
+    @IBOutlet weak var resultTextField: UILabel!
+    @IBOutlet weak var nextQuestionButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +28,10 @@ class ViewController: UIViewController {
     }
     
     func displayQuestion() {
-        questionField.text = quizManager.getQuestionText() 
+        questionField.text = quizManager.getQuestionText()
         playAgainButton.isHidden = true
+        nextQuestionButton.isHidden = true
+        resultTextField.isHidden = true
         displayAnswers()
     }
     
@@ -44,7 +49,10 @@ class ViewController: UIViewController {
         button2.isHidden = true
         button3.isHidden = true
         button4.isHidden = true
+        nextQuestionButton.isHidden = true
         playAgainButton.isHidden = false
+        resultTextField.isHidden = true
+        //resultTextField.text = quizManager.getResultText()
         questionField.text = quizManager.getResultText()
     }
     
@@ -60,20 +68,56 @@ class ViewController: UIViewController {
     }
     
     func nextRound() {
-        if quizManager.questionsAsked >= quizManager.questionsPerRound { // Ends the game
+        resultTextField.isHidden = true
+        if quizManager.questionsAsked >= quizManager.questionsPerRound {
+            // Ends the game
             displayScore()
         } else {
-            displayQuestion() // Keep playing
+            // Makes buttons useable again
+            button1.isEnabled = true
+            button2.isEnabled = true
+            button3.isEnabled = true
+            button4.isEnabled = true
+            resetButtonColors()
+            displayQuestion()
         }
     }
     
+    func resetButtonColors(){
+        button1.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
+        button2.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
+        button3.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
+        button4.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
+    }
+    
+    
     // MARK: - Button Actions
-    @IBAction func checkAnswer(_ sender: UIButton) {
+    @IBAction func checkAnswer(_ sender: UIButton) { //option clicked
         // Saves the string of the buttons title - if there is one
         guard let buttonText = sender.currentTitle else {return}
-        // sends the button tile to be checked by the manager
-        questionField.text = quizManager.checkAnswer(buttonText: buttonText)
-        loadNextRound(delay: 2)
+        // Sends the button tile to be checked by the manager
+        resultTextField.isHidden = false
+        resultTextField.text = quizManager.checkAnswer(buttonText: buttonText)
+        guard let result = resultTextField.text else {return}
+        // Changes the button color based on the result
+        if result.contains("Correct") {
+            sender.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+            resultTextField.textColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+        } else {
+            resultTextField.textColor = UIColor.gray
+            sender.backgroundColor = UIColor.gray
+        }
+        // After checking for result make buttons unclickable
+        button1.isEnabled = false
+        button2.isEnabled = false
+        button3.isEnabled = false
+        button4.isEnabled = false
+        // Display button to advance to the next round
+        nextQuestionButton.isHidden = false
+    }
+    
+    @IBAction func nextQuestion(_ sender: UIButton) {
+        loadNextRound(delay: 1)
     }
     
     @IBAction func playAgain(_ sender: UIButton) {

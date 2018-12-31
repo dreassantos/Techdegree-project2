@@ -34,14 +34,12 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSn-ih-qRR">
                                 <rect key="frame" x="30" y="262" width="315" height="50"/>
-                                <color key="backgroundColor" red="0.32549019607843138" green="0.45490196078431372" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.32447138428688049" green="0.45464593172073364" blue="0.98291033506393433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BN2-pB-hQA"/>
                                 </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="button1">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="button1"/>
                                 <connections>
                                     <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GmD-Ud-Emb"/>
                                 </connections>
@@ -95,28 +93,53 @@
                                     <action selector="playAgain:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0DS-Q9-gCH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmp-9M-gsa">
+                                <rect key="frame" x="30" y="548" width="315" height="50"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.4549019608" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HbX-fa-eFO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Next Question"/>
+                                <connections>
+                                    <action selector="nextQuestion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ldM-e0-XIz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZX-Dt-bSP">
+                                <rect key="frame" x="30" y="215" width="315" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dCF-BL-dDa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="2PY-Lu-aBk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bmp-9M-gsa" secondAttribute="trailing" constant="30" id="5BR-LO-FaQ"/>
                             <constraint firstItem="i7q-Ut-bwA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="8d9-xV-SFq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qYh-2d-v8I" secondAttribute="trailing" constant="30" id="BBd-FF-5dU"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bq5-xo-bCH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CSn-ih-qRR" secondAttribute="trailing" constant="30" id="F2M-Ch-Ira"/>
                             <constraint firstItem="iDa-N0-xRS" firstAttribute="top" secondItem="i7q-Ut-bwA" secondAttribute="bottom" constant="20" id="FBU-fe-zJD"/>
                             <constraint firstItem="eic-Nx-foS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="GZI-G4-b3U"/>
+                            <constraint firstItem="CSn-ih-qRR" firstAttribute="top" secondItem="9ZX-Dt-bSP" secondAttribute="bottom" constant="26" id="I1k-f2-Zny"/>
                             <constraint firstItem="i7q-Ut-bwA" firstAttribute="top" secondItem="qYh-2d-v8I" secondAttribute="bottom" constant="20" id="I4K-kE-ITk"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Jko-Ph-p0U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="eic-Nx-foS" secondAttribute="bottom" constant="69" id="Jrx-t5-67m"/>
                             <constraint firstItem="qYh-2d-v8I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="L0m-Xa-w9j"/>
+                            <constraint firstItem="9ZX-Dt-bSP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="RDS-85-V1j"/>
                             <constraint firstItem="iDa-N0-xRS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="VGn-o5-7Tq"/>
                             <constraint firstItem="dCF-BL-dDa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="146" id="cHe-LN-0xY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eic-Nx-foS" secondAttribute="trailing" constant="30" id="e9A-0l-UtM"/>
                             <constraint firstItem="CSn-ih-qRR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="242" id="etO-G9-kF4"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="ftx-8n-Jk7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dCF-BL-dDa" secondAttribute="trailing" constant="30" id="g35-L8-Fd8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9ZX-Dt-bSP" secondAttribute="trailing" constant="30" id="ik9-If-RR9"/>
+                            <constraint firstItem="bmp-9M-gsa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="kfr-W4-Ylr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="i7q-Ut-bwA" secondAttribute="trailing" constant="30" id="pTU-cf-CtL"/>
                             <constraint firstItem="CSn-ih-qRR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="qxZ-td-hl3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bmp-9M-gsa" secondAttribute="bottom" constant="69" id="s7Q-sQ-f6W"/>
                             <constraint firstItem="qYh-2d-v8I" firstAttribute="top" secondItem="CSn-ih-qRR" secondAttribute="bottom" constant="20" id="sCY-Up-XMV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uzC-Te-0bJ" secondAttribute="trailing" constant="70" id="xZf-CH-a62"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iDa-N0-xRS" secondAttribute="trailing" constant="30" id="zOK-Yl-suX"/>
@@ -128,8 +151,10 @@
                         <outlet property="button2" destination="qYh-2d-v8I" id="RJl-W9-cPa"/>
                         <outlet property="button3" destination="i7q-Ut-bwA" id="tu1-vZ-0lG"/>
                         <outlet property="button4" destination="iDa-N0-xRS" id="FhK-en-PWZ"/>
+                        <outlet property="nextQuestionButton" destination="bmp-9M-gsa" id="uqM-LO-FgW"/>
                         <outlet property="playAgainButton" destination="eic-Nx-foS" id="fZz-Md-Y70"/>
                         <outlet property="questionField" destination="dCF-BL-dDa" id="HIQ-UX-KNe"/>
+                        <outlet property="resultTextField" destination="9ZX-Dt-bSP" id="mCc-aP-UTb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

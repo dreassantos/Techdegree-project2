@@ -26,7 +26,7 @@
 		65F4A78121CB11010014C928 /* QuizSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSounds.swift; sourceTree = "<group>"; };
 		65F4A78321CB3E1A0014C928 /* correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = correct.wav; sourceTree = "<group>"; };
 		65F4A78521CB3E370014C928 /* wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong.wav; sourceTree = "<group>"; };
-		972A72AD2056F06C0059EF4A /* EnhanceQuizStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnhanceQuizStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		972A72AD2056F06C0059EF4A /* DrugQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		972A72B02056F06C0059EF4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		972A72B22056F06C0059EF4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		972A72B52056F06C0059EF4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		972A72A42056F06C0059EF4A = {
 			isa = PBXGroup;
 			children = (
-				972A72AF2056F06C0059EF4A /* EnhanceQuizStarter */,
+				972A72AF2056F06C0059EF4A /* DrugQuiz */,
 				972A72AE2056F06C0059EF4A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,12 +68,12 @@
 		972A72AE2056F06C0059EF4A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				972A72AD2056F06C0059EF4A /* EnhanceQuizStarter.app */,
+				972A72AD2056F06C0059EF4A /* DrugQuiz.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		972A72AF2056F06C0059EF4A /* EnhanceQuizStarter */ = {
+		972A72AF2056F06C0059EF4A /* DrugQuiz */ = {
 			isa = PBXGroup;
 			children = (
 				972A72B22056F06C0059EF4A /* ViewController.swift */,
@@ -87,15 +87,15 @@
 				972A72BC2056F06C0059EF4A /* Info.plist */,
 				65F4A78721CB44FE0014C928 /* Sounds */,
 			);
-			path = EnhanceQuizStarter;
+			path = DrugQuiz;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		972A72AC2056F06C0059EF4A /* EnhanceQuizStarter */ = {
+		972A72AC2056F06C0059EF4A /* DrugQuiz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 972A72BF2056F06C0059EF4A /* Build configuration list for PBXNativeTarget "EnhanceQuizStarter" */;
+			buildConfigurationList = 972A72BF2056F06C0059EF4A /* Build configuration list for PBXNativeTarget "DrugQuiz" */;
 			buildPhases = (
 				972A72A92056F06C0059EF4A /* Sources */,
 				972A72AA2056F06C0059EF4A /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = EnhanceQuizStarter;
+			name = DrugQuiz;
 			productName = EnhanceQuizStarter;
-			productReference = 972A72AD2056F06C0059EF4A /* EnhanceQuizStarter.app */;
+			productReference = 972A72AD2056F06C0059EF4A /* DrugQuiz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -127,7 +127,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 972A72A82056F06C0059EF4A /* Build configuration list for PBXProject "EnhanceQuizStarter" */;
+			buildConfigurationList = 972A72A82056F06C0059EF4A /* Build configuration list for PBXProject "DrugQuiz" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -140,7 +140,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				972A72AC2056F06C0059EF4A /* EnhanceQuizStarter */,
+				972A72AC2056F06C0059EF4A /* DrugQuiz */,
 			);
 		};
 /* End PBXProject section */
@@ -312,8 +312,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9E84DX62H;
-				INFOPLIST_FILE = EnhanceQuizStarter/Info.plist;
+				DEVELOPMENT_TEAM = T5YN2BB5MB;
+				INFOPLIST_FILE = "$(SRCROOT)/DrugQuiz/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamtreehouse.EnhanceQuizStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,8 +327,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R9E84DX62H;
-				INFOPLIST_FILE = EnhanceQuizStarter/Info.plist;
+				DEVELOPMENT_TEAM = T5YN2BB5MB;
+				INFOPLIST_FILE = "$(SRCROOT)/DrugQuiz/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamtreehouse.EnhanceQuizStarter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -340,7 +340,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		972A72A82056F06C0059EF4A /* Build configuration list for PBXProject "EnhanceQuizStarter" */ = {
+		972A72A82056F06C0059EF4A /* Build configuration list for PBXProject "DrugQuiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				972A72BD2056F06C0059EF4A /* Debug */,
@@ -349,7 +349,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		972A72BF2056F06C0059EF4A /* Build configuration list for PBXNativeTarget "EnhanceQuizStarter" */ = {
+		972A72BF2056F06C0059EF4A /* Build configuration list for PBXNativeTarget "DrugQuiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				972A72C02056F06C0059EF4A /* Debug */,
