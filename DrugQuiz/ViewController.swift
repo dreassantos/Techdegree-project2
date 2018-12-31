@@ -10,19 +10,22 @@ class ViewController: UIViewController {
     var quizManager = QuizManager()
     
     // MARK: - Outlets
+    // StackViews
+    @IBOutlet weak var topStackView: UIStackView!
+    @IBOutlet weak var threeQuestionStack: UIStackView!
+    @IBOutlet weak var fourthQuestionStack: UIStackView!
+    // Text Fields
     @IBOutlet weak var questionField: UILabel!
+    @IBOutlet weak var resultTextField: UILabel!
+    // Buttons
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var button4: UIButton!
-    @IBOutlet weak var playAgainButton: UIButton!
-    @IBOutlet weak var resultTextField: UILabel!
     @IBOutlet weak var nextQuestionButton: UIButton!
-    
-    @IBOutlet weak var threeQuestionStack: UIStackView!
-    @IBOutlet weak var fourthQuestionStack: UIStackView!
-    
-    
+    @IBOutlet weak var playAgainButton: UIButton!
+   
+
     override func viewDidLoad() {
         super.viewDidLoad()
         quizManager.loadSounds()
@@ -40,36 +43,22 @@ class ViewController: UIViewController {
     func displayAnswers() {
         var answers = quizManager.getAnswers()
         answers.shuffle() // Shuffle the array to place answers on random buttons.
-        let amountOfAnswerOptions = viewDecider(answerArrayLength: answers.count)
-        print(answers.count)
-        switch amountOfAnswerOptions {
-        case 3: button1.setTitle(answers[0], for: .normal)
-                button2.setTitle(answers[1], for: .normal)
-                button3.setTitle(answers[2], for: .normal)
-        case 4: button1.setTitle(answers[0], for: .normal)
-                button2.setTitle(answers[1], for: .normal)
-                button3.setTitle(answers[2], for: .normal)
-                button4.setTitle(answers[3], for: .normal)
-        default: resultTextField.text = "Error: View not found"
-        }
-    }
-    
-    func viewDecider(answerArrayLength: Int) -> Int {
-        if answerArrayLength == 4 {
-            threeQuestionStack.isHidden = false
-            fourthQuestionStack.isHidden = false
-            return 4 // We will be working with 4 answer options
-        } else {
-            threeQuestionStack.isHidden = false
+        let amountOfAnswerOptions = answers.count
+        threeQuestionStack.isHidden = false
+        button1.setTitle(answers[0], for: .normal)
+        button2.setTitle(answers[1], for: .normal)
+        button3.setTitle(answers[2], for: .normal)
+        if amountOfAnswerOptions == 3 {
             fourthQuestionStack.isHidden = true
-            return 3 // We will be working with 3 answer options
+        } else {
+            fourthQuestionStack.isHidden = false
+            button4.setTitle(answers[3], for: .normal)
         }
     }
-
     
     func displayScore() {
-        //Hides buttons and result text - Hides all 4 question options becasue they are nested
-        threeQuestionStack.isHidden = true
+        //Hides stacks & buttons & result text - Hides all 4 question options becasue they are nested
+        topStackView.isHidden = true
         nextQuestionButton.isHidden = true
         resultTextField.isHidden = true
         playAgainButton.isHidden = false
@@ -142,10 +131,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playAgain(_ sender: UIButton) {
-        button1.isHidden = false
-        button2.isHidden = false
-        button3.isHidden = false
-        button4.isHidden = false
+        topStackView.isHidden = false
         quizManager.playAgain()
         nextRound() // to keep playing
     }

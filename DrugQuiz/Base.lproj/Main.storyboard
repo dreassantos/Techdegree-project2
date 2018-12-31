@@ -64,71 +64,77 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fIy-ev-8Gg" userLabel="threeQuestionStack">
-                                <rect key="frame" x="30" y="251" width="229" height="200"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yQ4-mX-0dn" userLabel="topStackView">
+                                <rect key="frame" x="30" y="257" width="315" height="256"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSn-ih-qRR">
-                                        <rect key="frame" x="0.0" y="0.0" width="229" height="50"/>
-                                        <color key="backgroundColor" red="0.32447138428688049" green="0.45464593172073364" blue="0.98291033506393433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="BN2-pB-hQA"/>
-                                        </constraints>
-                                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button One On ThreeStackView"/>
-                                        <connections>
-                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GmD-Ud-Emb"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYh-2d-v8I">
-                                        <rect key="frame" x="0.0" y="75" width="229" height="50"/>
-                                        <color key="backgroundColor" red="0.32549019607843138" green="0.45490196078431372" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="4Hr-wS-UWI"/>
-                                        </constraints>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button Two On ThreeStackView"/>
-                                        <connections>
-                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OGW-Ev-fPx"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7q-Ut-bwA">
-                                        <rect key="frame" x="0.0" y="150" width="229" height="50"/>
-                                        <color key="backgroundColor" red="0.32549019607843138" green="0.45490196078431372" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="fPV-qV-Axt"/>
-                                        </constraints>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button Three On ThreeStackView"/>
-                                        <connections>
-                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jrw-NM-kKJ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GOT-ej-Ka1" userLabel="fourthQuestionStack">
-                                <rect key="frame" x="29" y="308" width="316" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDa-N0-xRS">
-                                        <rect key="frame" x="0.0" y="0.0" width="316" height="50"/>
-                                        <color key="backgroundColor" red="0.32549019607843138" green="0.45490196078431372" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="u6q-K0-yvg"/>
-                                        </constraints>
-                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button four (Only Button) on Three stack View"/>
-                                        <connections>
-                                            <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="box-9E-PKN"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fIy-ev-8Gg" userLabel="threeQuestionStack">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="190"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSn-ih-qRR">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
+                                                <color key="backgroundColor" red="0.32447138428688049" green="0.45464593172073364" blue="0.98291033506393433" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="BN2-pB-hQA"/>
+                                                </constraints>
+                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Really Long Sample Button Text"/>
+                                                <connections>
+                                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GmD-Ud-Emb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYh-2d-v8I">
+                                                <rect key="frame" x="0.0" y="70" width="315" height="50"/>
+                                                <color key="backgroundColor" red="0.32549019607843138" green="0.45490196078431372" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="4Hr-wS-UWI"/>
+                                                </constraints>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Really Long Sample Button Text"/>
+                                                <connections>
+                                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OGW-Ev-fPx"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7q-Ut-bwA">
+                                                <rect key="frame" x="0.0" y="140" width="315" height="50"/>
+                                                <color key="backgroundColor" red="0.32549019607843138" green="0.45490196078431372" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="fPV-qV-Axt"/>
+                                                </constraints>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Really Long Sample Button Text"/>
+                                                <connections>
+                                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jrw-NM-kKJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GOT-ej-Ka1" userLabel="fourthQuestionStack">
+                                        <rect key="frame" x="0.0" y="206" width="315" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDa-N0-xRS">
+                                                <rect key="frame" x="0.0" y="0.0" width="315" height="50"/>
+                                                <color key="backgroundColor" red="0.32549019607843138" green="0.45490196078431372" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="u6q-K0-yvg"/>
+                                                </constraints>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Really Long Sample Button Text"/>
+                                                <connections>
+                                                    <action selector="checkAnswer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="box-9E-PKN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="dCF-BL-dDa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="2PY-Lu-aBk"/>
+                            <constraint firstItem="yQ4-mX-0dn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="237" id="2zb-o6-kyC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bmp-9M-gsa" secondAttribute="trailing" constant="30" id="5BR-LO-FaQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fIy-ev-8Gg" secondAttribute="bottom" constant="220" id="7TS-EL-fPM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yQ4-mX-0dn" secondAttribute="trailing" constant="30" id="87N-X2-hsQ"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bq5-xo-bCH"/>
                             <constraint firstItem="eic-Nx-foS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="GZI-G4-b3U"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Jko-Ph-p0U"/>
@@ -140,6 +146,7 @@
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="ftx-8n-Jk7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dCF-BL-dDa" secondAttribute="trailing" constant="30" id="g35-L8-Fd8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9ZX-Dt-bSP" secondAttribute="trailing" constant="30" id="ik9-If-RR9"/>
+                            <constraint firstItem="yQ4-mX-0dn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="kG0-03-H7G"/>
                             <constraint firstItem="bmp-9M-gsa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="kfr-W4-Ylr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bmp-9M-gsa" secondAttribute="bottom" constant="69" id="s7Q-sQ-f6W"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uzC-Te-0bJ" secondAttribute="trailing" constant="70" id="xZf-CH-a62"/>
@@ -157,6 +164,7 @@
                         <outlet property="questionField" destination="dCF-BL-dDa" id="HIQ-UX-KNe"/>
                         <outlet property="resultTextField" destination="9ZX-Dt-bSP" id="mCc-aP-UTb"/>
                         <outlet property="threeQuestionStack" destination="fIy-ev-8Gg" id="DeW-y4-jrd"/>
+                        <outlet property="topStackView" destination="yQ4-mX-0dn" id="wWy-Ez-rhn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

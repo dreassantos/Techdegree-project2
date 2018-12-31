@@ -27,10 +27,10 @@ struct Quiz {
                          answerOptions: ["Omeprazole","Olmesartan","Valsartan"],
                          correctAnswer: 1),
         QuestionProvider(question: "Diovan",
-                         answerOptions: ["Metformin,Sertraline,Valsartan"],
+                         answerOptions: ["Metformin","Sertraline","Valsartan"],
                          correctAnswer: 2),
         QuestionProvider(question: "Pravachol",
-                         answerOptions: ["Fenofibrate","Pravastatin","Amlodipine"],
+                         answerOptions:["Fenofibrate","Pravastatin","Amlodipine"],
                          correctAnswer: 1),
         QuestionProvider(question: "Zocor",
                          answerOptions: ["Simvastatin","Sertraline","Losartan"],
@@ -67,6 +67,5 @@ struct Quiz {
                          correctAnswer: 1),
         QuestionProvider(question: "Aldactone",
                          answerOptions: ["Simvastatin","Ramipril","Sertraline","Spironolactone"],
-                         correctAnswer: 3)
-    ]
+                         correctAnswer: 3)]
 }
