@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     
     
     // MARK: - Button Actions
-    @IBAction func checkAnswer(_ sender: UIButton) { //option clicked
+    @IBAction func checkAnswer(_ sender: UIButton) { //activates when an answer option is clicked
         // Saves the string of the buttons title - if there is one
         guard let buttonText = sender.currentTitle else {return}
         // Sends the button tile to be checked by the manager
@@ -114,8 +114,18 @@ class ViewController: UIViewController {
             sender.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
             resultTextField.textColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
         } else {
+            
             resultTextField.textColor = UIColor.gray
             sender.backgroundColor = UIColor.gray
+        }
+        let correctAnswer = quizManager.getCorrectAnswer()
+        let buttons = [button1,button2,button3,button4]
+        for button in buttons{
+            guard let tempButtonText = button?.currentTitle else {return}
+            if tempButtonText.contains(correctAnswer)
+            {
+                button!.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+            }
         }
         // After checking for result make buttons unclickable
         button1.isEnabled = false
