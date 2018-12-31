@@ -100,32 +100,36 @@ class ViewController: UIViewController {
         button4.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
     }
     
-    
-    // MARK: - Button Actions
-    @IBAction func checkAnswer(_ sender: UIButton) { //activates when an answer option is clicked
-        // Saves the string of the buttons title - if there is one
-        guard let buttonText = sender.currentTitle else {return}
-        // Sends the button tile to be checked by the manager
-        resultTextField.isHidden = false
-        resultTextField.text = quizManager.checkAnswer(buttonText: buttonText)
-        guard let result = resultTextField.text else {return}
-        // Changes the button color based on the result
-        if result.contains("Correct") {
-            sender.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+    //MARK - Actions
+     @IBAction func checkAnswer(_ sender: UIButton) {
+        //after a button is clicked make butons unusable
+        button1.isEnabled = false
+        button2.isEnabled = false
+        button3.isEnabled = false
+        button4.isEnabled = false
+        //get the correct answer
+        let correctAnswer = quizManager.getCorrectAnswer()
+        guard let sendersText = sender.currentTitle else {return}
+        if sendersText.contains(correctAnswer){
+            quizManager.checkAnswerSounds(correctStatus: true)
+            resultTextField.text = "Correct"
             resultTextField.textColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+            sender.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
         } else {
-            
+            // If user did not select the correct answer
+            quizManager.checkAnswerSounds(correctStatus: false)
+            resultTextField.text = "Sorry, wrong answer"
             resultTextField.textColor = UIColor.gray
             sender.backgroundColor = UIColor.gray
-        }
-        let correctAnswer = quizManager.getCorrectAnswer()
-        let buttons = [button1,button2,button3,button4]
-        for button in buttons{
-            guard let tempButtonText = button?.currentTitle else {return}
-            if tempButtonText.contains(correctAnswer)
-            {
-                button!.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
-            }
+            //find the button with the correct answer
+                let buttons = [button1,button2,button3,button4]
+                for button in buttons{
+                    guard let buttonText = button?.currentTitle else {return} //buttonText to the current Text
+                    if buttonText.contains(correctAnswer)
+                    {
+                        button!.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+                    }
+                }
         }
         // After checking for result make buttons unclickable
         button1.isEnabled = false

@@ -85,27 +85,23 @@ class QuizManager {
     
     
     func getCorrectAnswer()-> String{
-        let correctOption = quiz.questions[indexOfSelectedQuestion].correctAnswer // finds the int that represents the index of the correct string
-        let correctAnswer = getAnswers()[correctOption] // the string of the correct answer
+        let correctOption = quiz.questions[indexOfSelectedQuestion].correctAnswer
+        let correctAnswer = getAnswers()[correctOption]
         return(correctAnswer)
-        
-    }
-    /// Returns a string: Checks the answer by comparing the buttons current displayed text to the quiz objects correct answer string
-    func checkAnswer(buttonText: String) -> String {
-        var correctStatus: Bool
-        questionsAsked += 1
-        if (buttonText.contains(getCorrectAnswer())) { // if the buttons text and the correct answer match its correct
-            correctSound.play(idNumber: correctSound.idNumber)
-            correctQuestions += 1
-            correctStatus = true
-        } else{
-            questionsWrong.append(currentQuestion)
-            wrongSound.play(idNumber: wrongSound.idNumber)
-            correctStatus = false
-        }
-        return (correctStatus ? "Correct" : "Wrong Answer") // Returns correct if true and wrong if false
     }
     
+    ///Helper function to checkAnswer action
+    func checkAnswerSounds(correctStatus: Bool) {
+        questionsAsked += 1
+        if correctStatus{
+            correctSound.play(idNumber: correctSound.idNumber)
+            correctQuestions += 1
+        } else {
+            wrongSound.play(idNumber: wrongSound.idNumber)
+            questionsWrong.append(currentQuestion)
+        }
+    }
+
     /// Resets the variables used in the quiz - Helper method to the playAgain() method in ViewController 
     func playAgain(){
         questionsAsked = 0
