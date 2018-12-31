@@ -2,6 +2,7 @@ import GameKit
 
 class QuizManager {
     
+
     let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
@@ -9,10 +10,10 @@ class QuizManager {
     var indexOfUsedQuestions:[Int] = []
     var questionsWrong:[String] = []
     let quiz = Quiz()
+    var currentQuestion: String = ""
  
     /// Loads all of the games sounds
     func loadSounds(){
-     
         startSound.loadSound(idNumber: &startSound.idNumber, soundName: startSound.soundName, soundType: startSound.soundType)
         correctSound.loadSound(idNumber: &correctSound.idNumber, soundName: correctSound.soundName, soundType: correctSound.soundType)
         wrongSound.loadSound(idNumber: &wrongSound.idNumber, soundName: wrongSound.soundName, soundType: wrongSound.soundType)
@@ -33,8 +34,8 @@ class QuizManager {
     /// Returns the text for the question
     func getQuestionText() -> String {
         randomQuestion()
-        let currentQustion = quiz.questions[indexOfSelectedQuestion].question
-        return ("What is the generic name for \(currentQustion)?")
+        currentQuestion = quiz.questions[indexOfSelectedQuestion].question
+        return ("What is the generic name for \(currentQuestion)?")
     }
     
     /// Retruns the array of possible answers for the current question
@@ -52,6 +53,8 @@ class QuizManager {
             You passed!
             Your score is \(score)%
             You got \(correctQuestions) out of \(questionsPerRound) correct!
+            
+            
             \(questionsToReview())
             """
     
@@ -71,7 +74,7 @@ class QuizManager {
     func questionsToReview() -> String {
         var tempString: String = ""
         if !(questionsWrong.isEmpty){
-           tempString = "Here are the generic drug names you should review:\n"
+           tempString = "Here are brand name drugs you should review:\n"
             for question in questionsWrong
             {
                 tempString += "\n\(question)"
@@ -92,7 +95,7 @@ class QuizManager {
             correctQuestions += 1
             correctStatus = true
         } else{
-            questionsWrong.append(buttonText)
+            questionsWrong.append(currentQuestion)
             wrongSound.play(idNumber: wrongSound.idNumber)
             correctStatus = false
         }

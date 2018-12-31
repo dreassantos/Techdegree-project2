@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultTextField: UILabel!
     @IBOutlet weak var nextQuestionButton: UIButton!
     
+    @IBOutlet weak var threeQuestionStack: UIStackView!
+    @IBOutlet weak var fourthQuestionStack: UIStackView!
     
     
     override func viewDidLoad() {
@@ -26,7 +28,7 @@ class ViewController: UIViewController {
         quizManager.loadSounds()
         displayQuestion()
     }
-    
+
     func displayQuestion() {
         questionField.text = quizManager.getQuestionText()
         playAgainButton.isHidden = true
@@ -38,21 +40,40 @@ class ViewController: UIViewController {
     func displayAnswers() {
         var answers = quizManager.getAnswers()
         answers.shuffle() // Shuffle the array to place answers on random buttons.
-        button1.setTitle(answers[0], for: .normal)
-        button2.setTitle(answers[1], for: .normal)
-        button3.setTitle(answers[2], for: .normal)
-        button4.setTitle(answers[3], for: .normal)
+        let amountOfAnswerOptions = viewDecider(answerArrayLength: answers.count)
+        print(answers.count)
+        switch amountOfAnswerOptions {
+        case 3: button1.setTitle(answers[0], for: .normal)
+                button2.setTitle(answers[1], for: .normal)
+                button3.setTitle(answers[2], for: .normal)
+        case 4: button1.setTitle(answers[0], for: .normal)
+                button2.setTitle(answers[1], for: .normal)
+                button3.setTitle(answers[2], for: .normal)
+                button4.setTitle(answers[3], for: .normal)
+        default: resultTextField.text = "Error: View not found"
+        }
     }
     
+    func viewDecider(answerArrayLength: Int) -> Int {
+        if answerArrayLength == 4 {
+            threeQuestionStack.isHidden = false
+            fourthQuestionStack.isHidden = false
+            return 4 // We will be working with 4 answer options
+        } else {
+            threeQuestionStack.isHidden = false
+            fourthQuestionStack.isHidden = true
+            return 3 // We will be working with 3 answer options
+        }
+    }
+
+    
     func displayScore() {
-        button1.isHidden = true
-        button2.isHidden = true
-        button3.isHidden = true
-        button4.isHidden = true
+        //Hides buttons and result text - Hides all 4 question options becasue they are nested
+        threeQuestionStack.isHidden = true
         nextQuestionButton.isHidden = true
-        playAgainButton.isHidden = false
         resultTextField.isHidden = true
-        //resultTextField.text = quizManager.getResultText()
+        playAgainButton.isHidden = false
+        //Displays the end of game results
         questionField.text = quizManager.getResultText()
     }
     
