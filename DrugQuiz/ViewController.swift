@@ -1,7 +1,7 @@
 //  ViewController.swift
-//  EnhanceQuizStarter - Brand to Generic Quiz
 //  Created by Pasan Premaratne on 3/12/18.
-//  Updated by Andrea S Santos 1/2/19
+//  EnhanceQuizStarter - Drug Quiz: Brandname to Genericname Quiz
+//  Updated by Andrea S Santos 01/02/19
 //  Copyright © 2018 Treehouse. All rights reserved.
 import UIKit
 import Foundation
