@@ -1,7 +1,7 @@
 //  ViewController.swift
 //  EnhanceQuizStarter - Brand to Generic Quiz
 //  Created by Pasan Premaratne on 3/12/18.
-//  Updated by Andrea S Santos 12/29/2018
+//  Updated by Andrea S Santos 1/2/19
 //  Copyright © 2018 Treehouse. All rights reserved.
 import UIKit
 import Foundation
@@ -31,51 +31,17 @@ class ViewController: UIViewController {
         quizManager.loadSounds()
         displayQuestion()
     }
-    
-    
-    // Timer Variables
-   var timeLeft = 15 // Lightning rounds starts with 15 seconds
-   var timer = Timer()
-   var timerIsRunning = false
-    
-    func startTimer(){
-        timerIsRunning = true
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTimer() {
-        //stop the timer from becomming negative
-  
-        if timeLeft < 1 { // cant put == 0 because if it glitches to -1 it will keep going.
-            timer.invalidate()
-             resetTimer()
-            loadNextRound(delay: 1)
-           
-        } else {
-            timeLeft -= 1
-            timerTextField.text = "You have \(timeLeft) second left!"
-        }
-    }
-    
-    func resetTimer(){
-        timer.invalidate()
-        timeLeft = 15
-        timerTextField.isHidden = true
-        timerIsRunning = false
-     
-    }
-
-    
-    
+   
+    // Methods for displaying content
     func displayQuestion() {
+        //starts the timer
         if timerIsRunning == false {
         startTimer()
         }
-        timerTextField.isHidden = false
-        questionField.text = quizManager.getQuestionText()
         playAgainButton.isHidden = true
         nextQuestionButton.isHidden = true
         resultTextField.isHidden = true
+        questionField.text = quizManager.getQuestionText()
         displayAnswers()
     }
     
@@ -83,10 +49,12 @@ class ViewController: UIViewController {
         var answers = quizManager.getAnswers()
         answers.shuffle() // Shuffle the array to place answers on random buttons.
         let amountOfAnswerOptions = answers.count
-        threeQuestionStack.isHidden = false
+        //show 3 options
+        //threeQuestionStack.isHidden = false
         button1.setTitle(answers[0], for: .normal)
         button2.setTitle(answers[1], for: .normal)
         button3.setTitle(answers[2], for: .normal)
+        //only load the forth option if the array has 4 options
         if amountOfAnswerOptions == 3 {
             fourthQuestionStack.isHidden = true
         } else {
@@ -105,6 +73,40 @@ class ViewController: UIViewController {
         questionField.text = quizManager.getResultText()
     }
     
+    //Methods for buttons
+    func getButtonsArray() -> [UIButton] {
+        let buttonsArray = [button1,button2,button3,button4]
+        return buttonsArray as! [UIButton]
+    }
+    
+    /// Displays the correct answer, appends to the questions wrong array, plays the wrong answer selected sound.
+    func invalidSelection(){
+        quizManager.checkAnswerSounds(correctStatus: false)
+        let answer = quizManager.getCorrectAnswer()
+        let buttons = getButtonsArray()
+        for button in buttons {
+            guard let buttonText = button.currentTitle else {return}
+            if buttonText.contains(answer){
+                button.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+            }
+        }
+    }
+    
+    func resetButtonColors(){
+        let buttons = getButtonsArray()
+        for button in buttons{
+            button.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
+        }
+    }
+
+    func changeButtonStatus(buttonStatus: Bool){
+        let buttons = getButtonsArray()
+        for button in buttons{
+            button.isEnabled = buttonStatus
+        }
+    }
+    
+    //Loading
     func loadNextRound(delay seconds: Int) {
         // Converts a delay in seconds to nanoseconds as signed 64 bit integer
         let delay = Int64(NSEC_PER_SEC * UInt64(seconds))
@@ -125,32 +127,52 @@ class ViewController: UIViewController {
             displayScore()
         } else {
             // Makes buttons useable again
-            
-            button1.isEnabled = true
-            button2.isEnabled = true
-            button3.isEnabled = true
-            button4.isEnabled = true
+            changeButtonStatus(buttonStatus: true)
             resetButtonColors()
             displayQuestion()
         }
     }
+
+    // Timer Methods
+    // Timer Variables
+    var timeLeft = 15 // Lightning rounds starts with 15 seconds
+    var timer = Timer()
+    var timerIsRunning = false
     
-    func resetButtonColors(){
-        button1.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
-        button2.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
-        button3.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
-        button4.backgroundColor = UIColor(red: 83/225.0, green: 116/225.0, blue: 251/255.0, alpha: 1.0)
+    func startTimer(){
+        timerTextField.isHidden = false
+        timerIsRunning = true
+        timerTextField.text = nil
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
     }
+    
+    @objc func updateTimer() {
+        //stop the timer from becomming negative
+        if timeLeft < 1 { // cant put == 0 because if it glitches to -1 it will keep going.
+            timer.invalidate()
+            invalidSelection()
+            resetTimer()
+            nextQuestionButton.isHidden = false
+        } else {
+            timeLeft -= 1
+            timerTextField.text = "You have \(timeLeft) second left!"
+        }
+    }
+    
+    func resetTimer(){
+        timer.invalidate()
+        timeLeft = 15
+        timerTextField.isHidden = true
+        timerIsRunning = false
+    }
+    
     
     //MARK - Actions
     @IBAction func checkAnswer(_ sender: UIButton) {
     //after a button is clicked make butons unusable
-    button1.isEnabled = false
-    button2.isEnabled = false
-    button3.isEnabled = false
-    button4.isEnabled = false
+    changeButtonStatus(buttonStatus: false)
     resetTimer()
-    //get the correct answer
+    //check if the answer is correct
     let correctAnswer = quizManager.getCorrectAnswer()
     guard let sendersText = sender.currentTitle else {return}
     if sendersText.contains(correctAnswer){
@@ -160,24 +182,14 @@ class ViewController: UIViewController {
         sender.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
     } else {
         // If user did not select the correct answer
-        quizManager.checkAnswerSounds(correctStatus: false)
         resultTextField.text = "Sorry, wrong answer"
         resultTextField.textColor = UIColor.gray
         sender.backgroundColor = UIColor.gray
-        //find the button with the correct answer
-            let buttons = [button1,button2,button3,button4]
-            for button in buttons{
-                button?.isEnabled = false
-                guard let buttonText = button?.currentTitle else {return} //buttonText to the current Text
-                if buttonText.contains(correctAnswer)
-                {
-                    button!.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
-                }
-            }
+        invalidSelection()
     }
     // Display button to advance to the next round
     nextQuestionButton.isHidden = false
-}
+    }
     
     @IBAction func nextQuestion(_ sender: UIButton) {
         loadNextRound(delay: 2)
@@ -189,3 +201,4 @@ class ViewController: UIViewController {
         nextRound() // to keep playing
     }
 }
+

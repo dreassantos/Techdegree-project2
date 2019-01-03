@@ -2,8 +2,7 @@ import GameKit
 
 class QuizManager {
     
-
-    let questionsPerRound = 8
+    let questionsPerRound = 4
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion = 0
@@ -25,13 +24,13 @@ class QuizManager {
     func randomQuestion() {
         //using a temp array to hold all of the used questions
         let tempSelectedIndex = GKRandomSource.sharedRandom().nextInt(upperBound: quiz.questions.count)
-        if !(indexOfUsedQuestions.contains(tempSelectedIndex)){ //checks if the random number was already used
+        if !(indexOfUsedQuestions.contains(tempSelectedIndex)){ //checks if the random inex was already used
             indexOfUsedQuestions.append(tempSelectedIndex)
             indexOfSelectedQuestion = tempSelectedIndex // sets the index of the selected question if the index is not already used.
         } else { randomQuestion() } // if it was already used pick and test another number.
     }
     
-    /// Returns the text for the question
+    /// Returns the text for the current question
     func getQuestionText() -> String {
         randomQuestion()
         currentQuestion = quiz.questions[indexOfSelectedQuestion].question
@@ -71,6 +70,7 @@ class QuizManager {
         return (result)
     }
     
+    ///Returns the questions that were answered incorrectly
     func questionsToReview() -> String {
         var tempString: String = ""
         if !(questionsWrong.isEmpty){
@@ -83,11 +83,11 @@ class QuizManager {
          return tempString
     }
     
-    
+    //Returns the current correct answer as a string
     func getCorrectAnswer()-> String{
         let correctOption = quiz.questions[indexOfSelectedQuestion].correctAnswer
         let correctAnswer = getAnswers()[correctOption]
-        return(correctAnswer)
+        return (correctAnswer)
     }
     
     ///Helper function to checkAnswer action

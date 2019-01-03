@@ -16,9 +16,7 @@ struct QuizSounds {
     func play(idNumber: SystemSoundID) {
     AudioServicesPlaySystemSound(idNumber) // Plays a system sound object.
     }
-
 }
-
 var startSound = QuizSounds(idNumber: 0, soundName: "GameSound" , soundType: "wav")
 var correctSound = QuizSounds(idNumber: 1, soundName: "correct" , soundType: "wav")
 var wrongSound = QuizSounds (idNumber: 2, soundName: "wrong" , soundType: "wav")
