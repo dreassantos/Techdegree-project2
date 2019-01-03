@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="height" constant="120" id="fOR-0C-jkP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question text field" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCF-BL-dDa">
-                                <rect key="frame" x="30" y="166" width="315" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reallly long smple question to test the field for multilines" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCF-BL-dDa">
+                                <rect key="frame" x="30" y="166" width="315" height="41"/>
                                 <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,6 +58,17 @@
                                     <action selector="nextQuestion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ldM-e0-XIz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-55-Txi">
+                                <rect key="frame" x="30" y="548" width="315" height="50"/>
+                                <color key="backgroundColor" red="0.3244713843" green="0.45464593170000001" blue="0.98291033510000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="26I-PX-tua"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result text field" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZX-Dt-bSP">
                                 <rect key="frame" x="30" y="215.5" width="315" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -130,11 +141,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="j8J-55-Txi" secondAttribute="bottom" constant="69" id="03u-vS-nfr"/>
                             <constraint firstItem="dCF-BL-dDa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="2PY-Lu-aBk"/>
                             <constraint firstItem="yQ4-mX-0dn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="237" id="2zb-o6-kyC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bmp-9M-gsa" secondAttribute="trailing" constant="30" id="5BR-LO-FaQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fIy-ev-8Gg" secondAttribute="bottom" constant="220" id="7TS-EL-fPM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yQ4-mX-0dn" secondAttribute="trailing" constant="30" id="87N-X2-hsQ"/>
+                            <constraint firstItem="j8J-55-Txi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="9IH-Sb-cow"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j8J-55-Txi" secondAttribute="trailing" constant="30" id="AEh-qy-08d"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bq5-xo-bCH"/>
                             <constraint firstItem="eic-Nx-foS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="GZI-G4-b3U"/>
                             <constraint firstItem="uzC-Te-0bJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Jko-Ph-p0U"/>
@@ -164,6 +178,7 @@
                         <outlet property="questionField" destination="dCF-BL-dDa" id="HIQ-UX-KNe"/>
                         <outlet property="resultTextField" destination="9ZX-Dt-bSP" id="mCc-aP-UTb"/>
                         <outlet property="threeQuestionStack" destination="fIy-ev-8Gg" id="DeW-y4-jrd"/>
+                        <outlet property="timerTextField" destination="j8J-55-Txi" id="wxQ-Xw-m2o"/>
                         <outlet property="topStackView" destination="yQ4-mX-0dn" id="wWy-Ez-rhn"/>
                     </connections>
                 </viewController>

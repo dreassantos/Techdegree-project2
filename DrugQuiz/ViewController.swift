@@ -4,7 +4,7 @@
 //  Updated by Andrea S Santos 12/29/2018
 //  Copyright © 2018 Treehouse. All rights reserved.
 import UIKit
-
+import Foundation
 class ViewController: UIViewController {
     
     var quizManager = QuizManager()
@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var threeQuestionStack: UIStackView!
     @IBOutlet weak var fourthQuestionStack: UIStackView!
     // Text Fields
+    @IBOutlet weak var timerTextField: UILabel!
     @IBOutlet weak var questionField: UILabel!
     @IBOutlet weak var resultTextField: UILabel!
     // Buttons
@@ -25,14 +26,52 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextQuestionButton: UIButton!
     @IBOutlet weak var playAgainButton: UIButton!
    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         quizManager.loadSounds()
         displayQuestion()
     }
+    
+    
+    // Timer Variables
+   var timeLeft = 15 // Lightning rounds starts with 15 seconds
+   var timer = Timer()
+   var timerIsRunning = false
+    
+    func startTimer(){
+        timerIsRunning = true
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        //stop the timer from becomming negative
+  
+        if timeLeft < 1 { // cant put == 0 because if it glitches to -1 it will keep going.
+            timer.invalidate()
+             resetTimer()
+            loadNextRound(delay: 1)
+           
+        } else {
+            timeLeft -= 1
+            timerTextField.text = "You have \(timeLeft) second left!"
+        }
+    }
+    
+    func resetTimer(){
+        timer.invalidate()
+        timeLeft = 15
+        timerTextField.isHidden = true
+        timerIsRunning = false
+     
+    }
 
+    
+    
     func displayQuestion() {
+        if timerIsRunning == false {
+        startTimer()
+        }
+        timerTextField.isHidden = false
         questionField.text = quizManager.getQuestionText()
         playAgainButton.isHidden = true
         nextQuestionButton.isHidden = true
@@ -78,12 +117,15 @@ class ViewController: UIViewController {
     }
     
     func nextRound() {
+        quizManager.questionsAsked += 1 
         resultTextField.isHidden = true
+
         if quizManager.questionsAsked >= quizManager.questionsPerRound {
             // Ends the game
             displayScore()
         } else {
             // Makes buttons useable again
+            
             button1.isEnabled = true
             button2.isEnabled = true
             button3.isEnabled = true
@@ -101,47 +143,44 @@ class ViewController: UIViewController {
     }
     
     //MARK - Actions
-     @IBAction func checkAnswer(_ sender: UIButton) {
-        //after a button is clicked make butons unusable
-        button1.isEnabled = false
-        button2.isEnabled = false
-        button3.isEnabled = false
-        button4.isEnabled = false
-        //get the correct answer
-        let correctAnswer = quizManager.getCorrectAnswer()
-        guard let sendersText = sender.currentTitle else {return}
-        if sendersText.contains(correctAnswer){
-            quizManager.checkAnswerSounds(correctStatus: true)
-            resultTextField.text = "Correct"
-            resultTextField.textColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
-            sender.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
-        } else {
-            // If user did not select the correct answer
-            quizManager.checkAnswerSounds(correctStatus: false)
-            resultTextField.text = "Sorry, wrong answer"
-            resultTextField.textColor = UIColor.gray
-            sender.backgroundColor = UIColor.gray
-            //find the button with the correct answer
-                let buttons = [button1,button2,button3,button4]
-                for button in buttons{
-                    guard let buttonText = button?.currentTitle else {return} //buttonText to the current Text
-                    if buttonText.contains(correctAnswer)
-                    {
-                        button!.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
-                    }
+    @IBAction func checkAnswer(_ sender: UIButton) {
+    //after a button is clicked make butons unusable
+    button1.isEnabled = false
+    button2.isEnabled = false
+    button3.isEnabled = false
+    button4.isEnabled = false
+    resetTimer()
+    //get the correct answer
+    let correctAnswer = quizManager.getCorrectAnswer()
+    guard let sendersText = sender.currentTitle else {return}
+    if sendersText.contains(correctAnswer){
+        quizManager.checkAnswerSounds(correctStatus: true)
+        resultTextField.text = "Correct"
+        resultTextField.textColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+        sender.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
+    } else {
+        // If user did not select the correct answer
+        quizManager.checkAnswerSounds(correctStatus: false)
+        resultTextField.text = "Sorry, wrong answer"
+        resultTextField.textColor = UIColor.gray
+        sender.backgroundColor = UIColor.gray
+        //find the button with the correct answer
+            let buttons = [button1,button2,button3,button4]
+            for button in buttons{
+                button?.isEnabled = false
+                guard let buttonText = button?.currentTitle else {return} //buttonText to the current Text
+                if buttonText.contains(correctAnswer)
+                {
+                    button!.backgroundColor = UIColor(red: 85/255.0, green: 176/255.0, blue: 112/255.0, alpha: 1.0)
                 }
-        }
-        // After checking for result make buttons unclickable
-        button1.isEnabled = false
-        button2.isEnabled = false
-        button3.isEnabled = false
-        button4.isEnabled = false
-        // Display button to advance to the next round
-        nextQuestionButton.isHidden = false
+            }
     }
+    // Display button to advance to the next round
+    nextQuestionButton.isHidden = false
+}
     
     @IBAction func nextQuestion(_ sender: UIButton) {
-        loadNextRound(delay: 1)
+        loadNextRound(delay: 2)
     }
     
     @IBAction func playAgain(_ sender: UIButton) {

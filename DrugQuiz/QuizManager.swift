@@ -3,7 +3,7 @@ import GameKit
 class QuizManager {
     
 
-    let questionsPerRound = 4
+    let questionsPerRound = 8
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion = 0
@@ -92,7 +92,6 @@ class QuizManager {
     
     ///Helper function to checkAnswer action
     func checkAnswerSounds(correctStatus: Bool) {
-        questionsAsked += 1
         if correctStatus{
             correctSound.play(idNumber: correctSound.idNumber)
             correctQuestions += 1
