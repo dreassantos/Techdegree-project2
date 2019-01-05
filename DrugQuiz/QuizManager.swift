@@ -32,6 +32,7 @@ class QuizManager {
     
     /// Returns the text for the current question
     func getQuestionText() -> String {
+        questionsAsked += 1
         randomQuestion()
         currentQuestion = quiz.questions[indexOfSelectedQuestion].question
         return ("What is the generic name for \(currentQuestion)?")

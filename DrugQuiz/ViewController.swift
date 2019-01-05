@@ -119,9 +119,7 @@ class ViewController: UIViewController {
     }
     
     func nextRound() {
-        quizManager.questionsAsked += 1 
         resultTextField.isHidden = true
-
         if quizManager.questionsAsked >= quizManager.questionsPerRound {
             // Ends the game
             displayScore()
